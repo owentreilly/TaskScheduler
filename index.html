@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+  <div class="content">
+    <h1 style = "text-align: center;">Task Master</h1>
+    <p style = "text-align: center;">Welcome to my task planning website. I hope you like it.</p>
+    {% if tasks|length < 1 %}
+    <h4 style = "text-align: center;">No tasks added yet, create one below</h4>
+    {% else %}
+    
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Task Added</th>
+          
+        <th>Actions</th>
+      </tr>
+      {% for task in tasks %}
+      <tr>
+        <td>{{task.content}}</td>
+        <td>
+            {{task.date_created.date()}}
+        </td>  
+        <td>
+            <a href="/delete/{{task.id}}">Delete</a>
+            <br>
+            <a href="/update/{{task.id}}">Edit</a>
+        </td>
+      </tr>
+        {% endfor %}
+      
+    </table>
+    {% endif %}
+    <form action="" method="post">
+        <input type="text" name="content" id="content" placeholder="Enter task here">
+        
+        <input type="submit" value="Add Task">
+
+    </div>
+
+{% endblock %}
+```
